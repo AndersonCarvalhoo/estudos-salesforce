@@ -9,6 +9,8 @@ public with sharing class CaseTriggerHandler {
         for(Account a : accounts) {
             if(a.Cases.size() < 3) {
                 a.Rating = 'Cold';
+            } else if (a.Cases.size() <= 5) {
+                a.Rating = 'Warm';
             }
         }
     }
