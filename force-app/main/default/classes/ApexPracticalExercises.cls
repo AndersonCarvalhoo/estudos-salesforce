@@ -1,0 +1,11 @@
+public with sharing class ApexPracticalExercises {
+    public ApexPracticalExercises() {
+
+    }
+    public Boolean duplicateContacts(Contact c1, Contact c2) {
+        if( ((c1.Email == c2.Email && c1.Email != null) || (c1.Phone == c2.Phone && c1.Phone != null)) ) {
+            return true;
+        }
+        return false;
+    }
+}
