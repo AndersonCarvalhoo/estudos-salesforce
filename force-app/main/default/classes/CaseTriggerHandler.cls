@@ -11,6 +11,8 @@ public with sharing class CaseTriggerHandler {
                 a.Rating = 'Cold';
             } else if (a.Cases.size() <= 5) {
                 a.Rating = 'Warm';
+            } else {
+                a.Rating = 'Hot';
             }
         }
     }
