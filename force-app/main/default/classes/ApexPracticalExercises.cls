@@ -1,7 +1,4 @@
 public with sharing class ApexPracticalExercises {
-    public ApexPracticalExercises() {
-
-    }
     public static Boolean duplicateContacts(Contact c1, Contact c2) {
         if( ((c1.Email == c2.Email && c1.Email != null) || (c1.Phone == c2.Phone && c1.Phone != null)) ) {
             return true;
@@ -19,5 +16,14 @@ public with sharing class ApexPracticalExercises {
             a.Rating = 'Hot';
         }
     }
+
+    // #59 - Contact Birthday
+    public Boolean isBirthday(Contact c) {
+        if (c.Birthdate == Date.Today() || (Date.Today().addYears(-5) == c.Birthdate)) {
+            return true;
+        }
+        return false;
+    }
+    
 
 }
