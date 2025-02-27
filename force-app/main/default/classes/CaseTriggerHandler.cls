@@ -6,14 +6,17 @@ public with sharing class CaseTriggerHandler {
         }
         List<Account> accounts = [SELECT Id, Rating, (SELECT Id FROM Cases WHERE Status = 'Closed') FROM Account WHERE Id IN :accountIds];
 
-        for(Account a : accounts) {
-            if(a.Cases.size() < 3) {
-                a.Rating = 'Cold';
-            } else if (a.Cases.size() <= 5) {
-                a.Rating = 'Warm';
-            } else {
-                a.Rating = 'Hot';
+        if (!accounts.isEmpty()) {
+            for(Account a : accounts) {
+                if(a.Cases.size() < 3) {
+                    a.Rating = 'Cold';
+                } else if (a.Cases.size() <= 5) {
+                    a.Rating = 'Warm';
+                } else {
+                    a.Rating = 'Hot';
+                }
             }
+            update accounts;
         }
     }
 }
