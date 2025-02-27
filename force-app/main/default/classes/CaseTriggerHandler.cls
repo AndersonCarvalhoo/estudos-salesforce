@@ -7,7 +7,9 @@ public with sharing class CaseTriggerHandler {
         List<Account> accounts = [SELECT Id, Rating, (SELECT Id FROM Cases WHERE Status = 'Closed') FROM Account WHERE Id IN :accountIds];
 
         for(Account a : accounts) {
-            System.debug(a.Cases.size());
+            if(a.Cases.size() < 3) {
+                a.Rating = 'Cold';
+            }
         }
     }
 }
