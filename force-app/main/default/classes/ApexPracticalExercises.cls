@@ -49,6 +49,14 @@ public with sharing class ApexPracticalExercises {
            c.IsEscalated = true; 
         }
     }
+
+    // #63 - Same Parent
+    public Boolean sameParent(Contact c, Opportunity opp) {
+        if (c.AccountId == opp.AccountId && c.AccountId != null) {
+            return true;
+        }
+        return false;
+    }
     
 
 }
