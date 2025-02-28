@@ -66,4 +66,12 @@ public with sharing class ApexPracticalExercises {
         return false;
     }
 
+    // #66 - Set Parent Account
+    public void setParent(Account acc, Contact con, Opportunity opp) {
+        if((acc != null && con != null && opp != null) && acc.Id != null) {
+            con.AccountId = acc.Id;
+            opp.AccountId = acc.Id;
+        }
+    }
+
 }
