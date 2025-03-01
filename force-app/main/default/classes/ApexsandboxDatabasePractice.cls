@@ -93,5 +93,22 @@ public with sharing class ApexsandboxDatabasePractice {
         }
     }
 
+    // #134 - Class from Course
+    public Id classFromCourse(String courseName) {
+        List<apxio__Course__c> courses = [SELECT Id, Name FROM apxio__Course__c WHERE Name = :courseName LIMIT 1];
+    
+        if (courses.isEmpty()) {
+            return null;
+        }
+        apxio__Course__c course = courses[0];
+        apxio__Class__c courseClass = new apxio__Class__c();
+        courseClass.Name = course.Name;
+        courseClass.apxio__Course__c = course.Id;
+    
+        insert courseClass;
+    
+        return courseClass.Id;
+    }
+
 
 }
