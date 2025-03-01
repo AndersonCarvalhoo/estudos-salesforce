@@ -31,6 +31,7 @@ public with sharing class ApexsandboxDatabasePractice {
             SELECT Id, Name, apxio__Active__c 
             FROM apxio__Student__c 
             WHERE apxio__Active__c = true
+            WITH SECURITY_ENFORCED
         ];
         return students;
     }
@@ -43,6 +44,7 @@ public with sharing class ApexsandboxDatabasePractice {
             WHERE apxio__Phone__c = '' 
             AND apxio__Email__c = '' 
             AND apxio__Active__c = true 
+            WITH SECURITY_ENFORCED
             ORDER BY Name ASC
         ];
         return unreachableStudents;
@@ -54,7 +56,8 @@ public with sharing class ApexsandboxDatabasePractice {
             SELECT Id, Name 
             FROM apxio__Student__c 
             WHERE apxio__Active__c = true 
-            AND (apxio__Email__c = null OR apxio__Phone__c = null) 
+            AND (apxio__Email__c = null OR apxio__Phone__c = null)
+            WITH SECURITY_ENFORCED
             ORDER BY Name ASC
         ];
         return studentsWithoutContactInfo;
@@ -95,7 +98,7 @@ public with sharing class ApexsandboxDatabasePractice {
 
     // #134 - Class from Course
     public Id classFromCourse(String courseName) {
-        List<apxio__Course__c> courses = [SELECT Id, Name FROM apxio__Course__c WHERE Name = :courseName LIMIT 1];
+        List<apxio__Course__c> courses = [SELECT Id, Name FROM apxio__Course__c WHERE Name = :courseName WITH SECURITY_ENFORCED LIMIT 1];
     
         if (courses.isEmpty()) {
             return null;
@@ -110,11 +113,11 @@ public with sharing class ApexsandboxDatabasePractice {
 
     // #135 - Enroll Students
     public void enrollStudents(List<String> emails, String className) {
-    List<apxio__Class__c> studentClass = [SELECT Id FROM apxio__Class__c WHERE Name = :className LIMIT 1];
+    List<apxio__Class__c> studentClass = [SELECT Id FROM apxio__Class__c WHERE Name = :className WITH SECURITY_ENFORCED LIMIT 1];
     
     List<apxio__Class_Enrollment__c> classEnrollments = new List<apxio__Class_Enrollment__c>();
 
-    for (apxio__Student__c student : [SELECT Id FROM apxio__Student__c WHERE apxio__Email__c IN :emails]) {
+    for (apxio__Student__c student : [SELECT Id FROM apxio__Student__c WHERE apxio__Email__c IN :emails WITH SECURITY_ENFORCED]) {
         apxio__Class_Enrollment__c classEnrollment = new apxio__Class_Enrollment__c();
         classEnrollment.apxio__Student__c = student.Id;
         classEnrollment.apxio__Offered_Class__c = studentClass[0].Id;
