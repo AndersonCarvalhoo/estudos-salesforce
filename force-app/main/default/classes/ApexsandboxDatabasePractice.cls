@@ -60,6 +60,7 @@ public with sharing class ApexsandboxDatabasePractice {
         return studentsWithoutContactInfo;
     }
 
+    // #131 - Course and Class
     public void createCourseAndClass(String name, String description) {
         apxio__Course__c course = new apxio__Course__c();
         course.Name = name;
@@ -79,6 +80,15 @@ public with sharing class ApexsandboxDatabasePractice {
     
     private string truncateString(String s, Integer size) {
         return s.length() > size ? s.substring(0,size) : s;
+    }
+
+    // #133 - Student List
+    public void insertStudents(List<String> studentNames, List<String> studentEmails) {
+        List<apxio__Student__c> students = new List<apxio__Student__c>();
+        for (Integer i = 0; i < studentNames.size(); i++) {
+            students.add(new apxio__Student__c(Name = studentNames[i], apxio__Email__c = studentEmails[i]));
+        }
+        insert students;
     }
 
 
