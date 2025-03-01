@@ -100,15 +100,30 @@ public with sharing class ApexsandboxDatabasePractice {
         if (courses.isEmpty()) {
             return null;
         }
-        apxio__Course__c course = courses[0];
         apxio__Class__c courseClass = new apxio__Class__c();
-        courseClass.Name = course.Name;
-        courseClass.apxio__Course__c = course.Id;
-    
+        courseClass.Name = courses[0].Name;
+        courseClass.apxio__Course__c = courses[0].Id;
         insert courseClass;
     
         return courseClass.Id;
     }
+
+    // #135 - Enroll Students
+    public void enrollStudents(List<String> emails, String className) {
+    List<apxio__Class__c> studentClass = [SELECT Id FROM apxio__Class__c WHERE Name = :className LIMIT 1];
+    
+    List<apxio__Class_Enrollment__c> classEnrollments = new List<apxio__Class_Enrollment__c>();
+
+    for (apxio__Student__c student : [SELECT Id FROM apxio__Student__c WHERE apxio__Email__c IN :emails]) {
+        apxio__Class_Enrollment__c classEnrollment = new apxio__Class_Enrollment__c();
+        classEnrollment.apxio__Student__c = student.Id;
+        classEnrollment.apxio__Offered_Class__c = studentClass[0].Id;
+        classEnrollments.add(classEnrollment);
+    }
+
+    insert classEnrollments;
+
+}
 
 
 }
