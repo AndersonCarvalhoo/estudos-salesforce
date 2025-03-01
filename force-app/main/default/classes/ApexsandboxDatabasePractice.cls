@@ -88,7 +88,9 @@ public with sharing class ApexsandboxDatabasePractice {
         for (Integer i = 0; i < studentNames.size(); i++) {
             students.add(new apxio__Student__c(Name = studentNames[i], apxio__Email__c = studentEmails[i]));
         }
-        insert students;
+        if (!students.isEmpty()) {
+            insert students;
+        }
     }
 
 
