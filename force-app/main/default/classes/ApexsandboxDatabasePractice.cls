@@ -60,5 +60,26 @@ public with sharing class ApexsandboxDatabasePractice {
         return studentsWithoutContactInfo;
     }
 
+    public void createCourseAndClass(String name, String description) {
+        apxio__Course__c course = new apxio__Course__c();
+        course.Name = name;
+        if(description != null) {
+            course.apxio__Course_Details__c = description;
+        }
+        insert course;
+    
+        apxio__Class__c courseClass = new apxio__Class__c();
+        courseClass.apxio__Course__c = course.Id;
+        courseClass.Name = name;
+        if(description != null) {
+            courseClass.apxio__Description__c = truncateString(description, 255);
+        }
+        insert courseClass;
+    }
+    
+    private string truncateString(String s, Integer size) {
+        return s.length() > size ? s.substring(0,size) : s;
+    }
+
 
 }
