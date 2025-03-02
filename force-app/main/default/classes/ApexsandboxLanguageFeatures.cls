@@ -28,4 +28,15 @@ public with sharing class ApexsandboxLanguageFeatures {
         List<Account> objects = (List<Account>) JSON.deserialize(inputJSON, List<Account>.class);
         return objects;
     }
+
+    // # #94 - Safe Navigation Operator
+    public static String getAccountBillingCityWithSafeNavigation(List<Account> accounts){
+    
+        String billingCityWithUpperCase = accounts[0]?.BillingCity;
+        if (billingCityWithUpperCase == null) {
+            return billingCityWithUpperCase;
+        }
+        return billingCityWithUpperCase.toUpperCase();
+    }
+    
 }
