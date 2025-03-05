@@ -33,8 +33,11 @@ public with sharing class ApexsandboxMapPractice {
         Map<String, Decimal> totalRevenueByIndustry = new Map<String, Decimal>();
         for (Account a : accounts) {
             Decimal nowRevenue = totalRevenueByIndustry.get(a.Industry);
-            Decimal calculateRevenueValue = nowRevenue == null ? a.AnnualRevenue : nowRevenue + a.AnnualRevenue;
-            totalRevenueByIndustry.put(a.Industry, calculateRevenueValue);
+            if (nowRevenue == null) {
+                totalRevenueByIndustry.put(a.Industry, a.AnnualRevenue);
+            } else {
+                totalRevenueByIndustry.put(a.Industry, nowRevenue + a.AnnualRevenue);
+            }
         }
         return totalRevenueByIndustry;
     }
