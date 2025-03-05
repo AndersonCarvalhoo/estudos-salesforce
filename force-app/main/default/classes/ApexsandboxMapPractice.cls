@@ -27,4 +27,15 @@ public with sharing class ApexsandboxMapPractice {
         }
         return accountByPhone;
     }
+
+    // #86 - Industry Summary
+    public Map<String, Decimal> industrySummary(List<Account> accounts) {
+        Map<String, Decimal> totalRevenueByIndustry = new Map<String, Decimal>();
+        for (Account a : accounts) {
+            Decimal nowRevenue = totalRevenueByIndustry.get(a.Industry);
+            Decimal calculateRevenueValue = nowRevenue == null ? a.AnnualRevenue : nowRevenue + a.AnnualRevenue;
+            totalRevenueByIndustry.put(a.Industry, calculateRevenueValue);
+        }
+        return totalRevenueByIndustry;
+    }
 }
