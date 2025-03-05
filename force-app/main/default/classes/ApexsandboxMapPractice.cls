@@ -5,4 +5,15 @@ public with sharing class ApexsandboxMapPractice {
         String employeeEmail = employeeIdToEmail.get(employeeId);
         return employeeEmail == null ? 'info@apexsandbox.io' : employeeEmail;
     }
+
+    // #84 - Phonebook
+    public Map<String, String> phonebook(List<Contact> contacts) {
+        Map<String, String> phoneByName = new Map<String, String>();
+        for (Contact c : contacts) {
+            if (c.Phone != null) {
+                phoneByName.put(c.Name, c.Phone);
+            }
+        }
+        return phoneByName;
+    }
 }
