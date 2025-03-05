@@ -16,4 +16,15 @@ public with sharing class ApexsandboxMapPractice {
         }
         return phoneByName;
     }
+
+    // #85 - Phone to Account
+    public Map<String, Account> phoneToAccount(List<Account> accounts) {
+        Map<String, Account> accountByPhone = new Map<String, Account>();
+        for (Account a : accounts) {
+            if (a.Phone != null) {
+                accountByPhone.put(a.Phone, a);
+            }
+        }
+        return accountByPhone;
+    }
 }
