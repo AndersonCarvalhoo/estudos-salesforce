@@ -38,8 +38,8 @@ public with sharing class ApexsandboxSetPractice {
 
     // #80 - Duplicate Integers
     public Boolean containsDuplicates(List<Integer> nums) {
-        Set<Integer> inteiros = new Set<Integer>(nums);
-        if (nums.size() != inteiros.size()) {
+        Set<Integer> setNums = new Set<Integer>(nums);
+        if (nums.size() != setNums.size()) {
             return true;
         }
         return false;
