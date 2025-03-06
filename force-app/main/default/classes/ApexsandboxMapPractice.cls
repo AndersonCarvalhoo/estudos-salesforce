@@ -41,4 +41,17 @@ public with sharing class ApexsandboxMapPractice {
         }
         return totalRevenueByIndustry;
     }
+
+    // #87 - Cases by Type
+    public Map<String, List<Case>> casesByType(List<Case> cases) {
+        Map<String, List<Case>> listCaseByType = new Map<String, List<Case>>();
+        for(Case c : cases) {
+            if (c.Type != null) {
+                List<Case> cas = new List<Case>(listCaseByType.get(c.Type));
+                cas.add(c);
+                listCaseByType.put(c.Type, cas);
+            }
+        }
+        return listCaseByType;
+    }
 }
