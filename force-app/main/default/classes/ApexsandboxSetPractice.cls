@@ -24,4 +24,15 @@ public with sharing class ApexsandboxSetPractice {
         numbersIntersection.retainAll(set2);  // Mantém apenas os elementos que estão em ambos os Sets
         return numbersIntersection;
     }
+
+    // #82 - Related Accounts
+    public static Set<Id> accountIds(List<Opportunity> opps) {
+        set<Id> accountIds = new set<Id>();
+        for (Opportunity opp : opps) {
+            if (opp.AccountId != null) {
+                accountIds.add(opp.AccountId);
+            }
+        }
+        return accountIds;
+    }
 }
