@@ -35,4 +35,13 @@ public with sharing class ApexsandboxSetPractice {
         }
         return accountIds;
     }
+
+    // #80 - Duplicate Integers
+    public Boolean containsDuplicates(List<Integer> nums) {
+        Set<Integer> inteiros = new Set<Integer>(nums);
+        if (nums.size() != inteiros.size()) {
+            return true;
+        }
+        return false;
+    }
 }
