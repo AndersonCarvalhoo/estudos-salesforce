@@ -44,4 +44,11 @@ public with sharing class ApexsandboxSetPractice {
         }
         return false;
     }
+
+    // #81 - Same Elements
+    public Boolean sameElements(List<Integer> nums1, List<Integer> nums2) {
+        Set<Integer> setNums1 = new Set<Integer>(nums1);
+        Set<Integer> setNums2 = new Set<Integer>(nums2);
+        return setNums1.size() == setNums2.size();
+    }
 }
