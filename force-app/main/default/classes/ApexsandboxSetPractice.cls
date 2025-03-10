@@ -45,6 +45,12 @@ public with sharing class ApexsandboxSetPractice {
         return false;
     }
 
+    // #80 - Duplicate Integers
+    public Boolean containsDuplicatesTernary(List<Integer> nums) {
+        Set<Integer> setNums = new Set<Integer>(nums);
+        return nums.size() != setNums.size() ? true : false; 
+    }
+
     // #81 - Same Elements
     public Boolean sameElements(List<Integer> nums1, List<Integer> nums2) {
         Set<Integer> setNums1 = new Set<Integer>(nums1);
