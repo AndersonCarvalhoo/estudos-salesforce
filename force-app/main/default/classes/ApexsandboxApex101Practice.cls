@@ -28,5 +28,14 @@ public with sharing class ApexsandboxApex101Practice {
         return false;
     }
 
+    // #21 - A or An
+    public String aOrAn(String word) {
+        Set<String> vowels = new Set<String>{'a', 'e', 'i', 'o', 'u'};
+        if (vowels.contains(word.substring(0,1))) {
+            return 'an ' + word;
+        }
+        return 'a ' + word;
+    }
+
     
 }
