@@ -19,4 +19,14 @@ public with sharing class ApexsandboxApex101Practice {
         }
         return false;
     }
+
+    // #20 - Ascending Order
+    public Boolean ascendingOrder(Integer a, Integer b, Integer c) {
+        if (a <= b && b <= c) {
+            return true;
+        }
+        return false;
+    }
+
+    
 }
