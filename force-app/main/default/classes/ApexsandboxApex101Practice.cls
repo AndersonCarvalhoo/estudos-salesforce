@@ -6,4 +6,9 @@ public with sharing class ApexsandboxApex101Practice {
         }
         return false;
     }
+
+    // #4 - Number Difference
+    public Integer diff(Integer a, Integer b) {
+        return Math.abs(a - b);
+    }
 }
