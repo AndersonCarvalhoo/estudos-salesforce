@@ -11,4 +11,12 @@ public with sharing class ApexsandboxApex101Practice {
     public Integer diff(Integer a, Integer b) {
         return Math.abs(a - b);
     }
+
+    // #14 - Sum Equals
+    public Boolean sumEquals(Integer a, Integer b, Integer c) {
+        if ((a + b) == c) {
+            return true;
+        }
+        return false;
+    }
 }
