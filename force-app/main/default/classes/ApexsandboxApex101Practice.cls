@@ -36,6 +36,7 @@ public with sharing class ApexsandboxApex101Practice {
         }
         return 'a ' + word;
     }
+
     //#3 - Largest of Three
     public static Integer findLargest(Integer num1, Integer num2, Integer num3) {
         if (num1 > num2 && num1 > num3) {
@@ -44,6 +45,11 @@ public with sharing class ApexsandboxApex101Practice {
             return num2;
         }
         return num3;
+    }
+
+    // #137 - Tip Calculator
+    public Decimal computeTip(Decimal total, Integer percent) {
+        return total * (percent/100);
     }
 
     
