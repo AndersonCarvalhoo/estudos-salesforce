@@ -49,7 +49,7 @@ public with sharing class ApexsandboxApex101Practice {
 
     // #137 - Tip Calculator
     public Decimal computeTip(Decimal total, Integer percent) {
-        return total * (percent/100);
+        return total * percent/100;
     }
 
     
