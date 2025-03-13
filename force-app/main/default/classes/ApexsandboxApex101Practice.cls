@@ -61,5 +61,17 @@ public with sharing class ApexsandboxApex101Practice {
     public Boolean isEndWithZero(Integer num){
         return Math.mod(num, 10) == 0;
     }
+
+    // #10 - Format Name https://www.apexsandbox.io/problem/10
+    public String formatName(String firstName, String lastName) {
+        if (String.isBlank(firstName) && !String.isBlank(lastName)) {
+            return lastName;
+        } else if (String.isBlank(lastName) && !String.isBlank(firstName)) {
+            return firstName;
+        } else if (String.isBlank(firstName) && String.isBlank(lastName)) {
+            return '';
+        }
+        return lastName + ', ' + firstName;
+    }
     
 }
