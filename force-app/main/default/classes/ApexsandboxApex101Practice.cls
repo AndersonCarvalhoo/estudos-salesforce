@@ -56,5 +56,10 @@ public with sharing class ApexsandboxApex101Practice {
     public Boolean isPassed(Boolean passedExam, Boolean passedAssignments, Boolean passedProject) {
         return (passedExam && passedAssignments) || (passedAssignments && passedProject) || (passedExam && passedProject);
     }
+
+    // #90 - Ends With 0
+    public Boolean isEndWithZero(Integer num){
+        return Math.mod(num, 10) == 0;
+    }
     
 }
