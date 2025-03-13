@@ -68,7 +68,7 @@ public with sharing class ApexsandboxApex101Practice {
     }
 
     // #10 - Format Name https://www.apexsandbox.io/problem/10
-    public String formatName(String firstName, String lastName) {
+    public String formatName2(String firstName, String lastName) {
         if (String.isBlank(firstName) && !String.isBlank(lastName)) {
             return lastName;
         } else if (String.isBlank(lastName) && !String.isBlank(firstName)) {
@@ -79,13 +79,21 @@ public with sharing class ApexsandboxApex101Practice {
         return lastName + ', ' + firstName;
     }
 
-    //#16 - Sum 1 to N
+    // #16 - Sum 1 to N
     public Integer sumToN(Integer n) {
         Integer sum = n;
         for (Integer i = 0; i < n; i++) {
             sum += i;
         }
         return sum;
+    }
+
+    // #11 - Name from Email
+    public String nameFromEmail(String email) {
+        String nameEmail = email.substring(0, email.lastIndexOf('@'));
+        String firstName = nameEmail.substringBefore('.').toLowerCase().capitalize();
+        String lastName = nameEmail.substringAfter('.').toLowerCase().capitalize();
+        return firstName + ' ' + lastName;
     }
     
 }
