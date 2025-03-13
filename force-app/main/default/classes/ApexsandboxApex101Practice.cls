@@ -52,5 +52,9 @@ public with sharing class ApexsandboxApex101Practice {
         return total * percent/100;
     }
 
+    // #19 - Passing Students
+    public Boolean isPassed(Boolean passedExam, Boolean passedAssignments, Boolean passedProject) {
+        return (passedExam && passedAssignments) || (passedAssignments && passedProject) || (passedExam && passedProject);
+    }
     
 }
