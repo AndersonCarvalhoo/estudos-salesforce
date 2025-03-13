@@ -62,6 +62,11 @@ public with sharing class ApexsandboxApex101Practice {
         return Math.mod(num, 10) == 0;
     }
 
+    // #9 - Full Name
+    public String formatName(String firstName, String lastName) {
+        return firstName + ' ' + lastName;
+    }
+
     // #10 - Format Name https://www.apexsandbox.io/problem/10
     public String formatName(String firstName, String lastName) {
         if (String.isBlank(firstName) && !String.isBlank(lastName)) {
@@ -72,6 +77,15 @@ public with sharing class ApexsandboxApex101Practice {
             return '';
         }
         return lastName + ', ' + firstName;
+    }
+
+    //#16 - Sum 1 to N
+    public Integer sumToN(Integer n) {
+        Integer sum = n;
+        for (Integer i = 0; i < n; i++) {
+            sum += i;
+        }
+        return sum;
     }
     
 }
