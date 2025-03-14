@@ -95,5 +95,29 @@ public with sharing class ApexsandboxApex101Practice {
         String lastName = nameEmail.substringAfter('.').toLowerCase().capitalize();
         return firstName + ' ' + lastName;
     }
+
+    // #79 - Change Time Format
+    public String changeTimeFormat(String strTime) {
+        Integer hour = Integer.valueOf(strTime.substringBefore(':'));
+        String hours = strTime.substringBefore(':');
+        String minutes = strTime.substringAfter(':');
+    
+        if (hour >= 13 && hour <= 24) {
+            hour = hour - 12;
+            return addZeroInHours(hour) + ':' + minutes + ' PM';
+        } else if (hour >= 1 && hour < 12) {
+            return hours + ':' + minutes + ' AM';
+        } else if (hour == 00) {
+            return '12:' + minutes + ' AM';
+        }
+        return hours + ':' + minutes + ' PM';
+    }
+    
+    public String addZeroInHours(Integer hours) {
+        if (hours < 10) {
+            return '0'+hours;
+        }
+        return String.valueOf(hours);
+    }
     
 }
